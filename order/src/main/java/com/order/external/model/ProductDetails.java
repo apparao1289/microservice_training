@@ -1,28 +1,22 @@
-package com.order.entity;
+package com.order.external.model;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class ProductDetails {
 
-import org.hibernate.annotations.GenericGenerator;
-
-@Entity
-@Table(name = "product_item")
-public class ProductItem {
-
-	@Id
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	private String id;
 
 	private String name;
 
-	private Double price;
+	private String description;
 
-	private String orderId;
+	private String sku;
+
+	private String brand;
+
+	private String size;
+
+	private Integer quantity;
 
 	private Date created_on;
 
@@ -32,7 +26,7 @@ public class ProductItem {
 
 	private String lastUpdatedBy;
 	
-	private String productId;
+	private Double price;
 
 	public String getId() {
 		return id;
@@ -50,20 +44,44 @@ public class ProductItem {
 		this.name = name;
 	}
 
-	public Double getPrice() {
-		return price;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getOrderId() {
-		return orderId;
+	public String getSku() {
+		return sku;
 	}
 
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+	public void setSku(String sku) {
+		this.sku = sku;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 	public Date getCreated_on() {
@@ -98,13 +116,14 @@ public class ProductItem {
 		this.lastUpdatedBy = lastUpdatedBy;
 	}
 
-	public String getProductId() {
-		return productId;
+	public Double getPrice() {
+		return price;
 	}
 
-	public void setProductId(String productId) {
-		this.productId = productId;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
-
 	
+	
+
 }

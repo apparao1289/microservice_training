@@ -7,7 +7,6 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
@@ -28,7 +27,7 @@ public class ProductOrderDaoImpl implements ProductOrderDao {
 	private ProductItemRepository productItemRepository;
 
 	@Override
-	public void createOrder(ProductOrderDetails productOrderDetails) {
+	public String createOrder(ProductOrderDetails productOrderDetails) {
 
 		ProductOrder productOrder = new ProductOrder();
 		productOrder.setCreated_on(new Date());
@@ -53,10 +52,12 @@ public class ProductOrderDaoImpl implements ProductOrderDao {
 				productItem.setName(productItemDetails.getName());
 				productItem.setOrderId(pOrder.getId());
 				productItem.setPrice(productItemDetails.getPrice());
+				productItem.setProductId(productItemDetails.getProductId());
 				productItemList.add(productItem);
 			}
 			productItemRepository.saveAll(productItemList);
 		}
+		return pOrder.getId();
 	}
 
 	@Override

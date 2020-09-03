@@ -26,6 +26,7 @@ public class ProductOrderServiceImpl implements ProductOrderService {
 
 	@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
 	public Result createOrder(ProductOrderDetails productOrderDetails) {
+		String orderId = null;
 		Result result = new Result();
 		// step1: check the inventory.
 		boolean productAvailable = inventoryServiceUtil.checkInventory(productOrderDetails.getProductItemDetails());
@@ -37,7 +38,7 @@ public class ProductOrderServiceImpl implements ProductOrderService {
 			
 			if(creditAvailable) {
 				// step3: insert the records to product_order table.
-				productOrderDao.createOrder(productOrderDetails);
+ 				orderId = productOrderDao.createOrder(productOrderDetails);
 				
 				// step4: Invoke the shipping service.
 			} else {
@@ -51,7 +52,7 @@ public class ProductOrderServiceImpl implements ProductOrderService {
 		}
 				
 		result.setStatus("SUCCESS");
-		result.setMessage("Product are not available.");
+		result.setMessage("Order created and order id is :"+orderId);
 		return result;
 	}
 
