@@ -1,4 +1,4 @@
-orderservice code base:
+Download orderservice code base:
 
 Eclipse --> File --> import --> Existing maven projects --> select the project code base.
 
@@ -21,7 +21,7 @@ Note: Corresponding DB scripts available in resources folder.
 H2 Database link: http://localhost:8083/order/h2
 
 
-customerservice code base:
+Download  customerservice code base:
 
 
 Eclipse --> File --> import --> Existing maven projects --> select the project code base.
@@ -44,7 +44,7 @@ Note: Corresponding DB scripts available in resources folder.
 H2 Database : http://localhost:8081/customer/h2
 
 
-Inventoryservice code base:
+Download Inventoryservice code base:
 
 Eclipse --> File --> import --> Existing maven projects --> select the project code base.
 
