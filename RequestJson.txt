@@ -1,0 +1,42 @@
+Product create Json:
+===================
+{
+  "brand": "MI",
+  "description": "32 inch led smart tv",
+  "name": "tv",
+  "quantity": 20,
+  "size": "32 inch",
+  "sku": "electronics",
+  "price":"200"
+}
+
+
+customer create Json:
+=======================
+{
+  "name" : "Anand",
+  "email":"anand@gmail.com",
+  "phone":"9876554210",
+  "credit":5000
+}
+
+Order Create Json:
+===================
+
+{
+ 
+  "customerId": "aeb66a8a-061b-462c-a14c-1c21364e6b30",
+   "name": "Electronic order",
+  "productItemDetails": [
+    {
+      "name": "32 inch led LG tv",
+      "price": 120
+    },
+    {
+      "name": "32 inch led SAMSUNG tv",
+      "price": 110
+    }
+
+  ],
+  "totalPrice": 230
+}
