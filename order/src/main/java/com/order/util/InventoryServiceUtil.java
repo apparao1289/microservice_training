@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.order.entity.model.ProductItemDetails;
 import com.order.external.model.ProductDetails;
 
@@ -22,8 +23,7 @@ public class InventoryServiceUtil {
 	public boolean checkInventory(List<ProductItemDetails> productItemDetails) {
 
 		for (ProductItemDetails productItem : productItemDetails) {
-			StringBuilder url = new StringBuilder(inventoryUrl).append(productItem.getProductId());
-			ProductDetails productDetails = restTemplate.getForObject(url.toString(), ProductDetails.class);
+			ProductDetails productDetails = getProductDetails(productItem);
 			if (!(null != productDetails && productDetails.getQuantity() > 0)) {
 				return false;
 			}
@@ -31,5 +31,17 @@ public class InventoryServiceUtil {
 
 		return true;
 	}
-
+	
+	@HystrixCommand(fallbackMethod = "productDetails")
+	public ProductDetails getProductDetails(ProductItemDetails productItemDetails) {
+		StringBuilder url = new StringBuilder(inventoryUrl).append(productItemDetails.getProductId());
+		ProductDetails productDetails = restTemplate.getForObject(url.toString(), ProductDetails.class);
+		return productDetails;
+	}
+	
+	public ProductDetails productDetails() {
+		ProductDetails productDetails = new ProductDetails();
+		System.out.println("Invoking fallback method...");
+		return productDetails;
+	}
 }
