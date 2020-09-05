@@ -40,8 +40,8 @@ public class InventoryServiceUtil {
 	}
 	
 	public ProductDetails productDetails() {
-		ProductDetails productDetails = new ProductDetails();
 		System.out.println("Invoking fallback method...");
+		ProductDetails productDetails = new ProductDetails();
 		return productDetails;
 	}
 }

@@ -21,6 +21,7 @@ public class CustomerServiceUtil {
 		StringBuilder sb = new StringBuilder(url).append(customerId);
 
 		CustomerDetails customerDetails = restTemplate.getForObject(sb.toString(), CustomerDetails.class);
+		//restTemplate.exchange(sb.toString(), HttpMethod.GET, null, CustomerDetails.class);
 
 		if (customerDetails != null && totalPrice > customerDetails.getCredit()) {
 			return false;
